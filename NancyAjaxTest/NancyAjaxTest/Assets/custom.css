@@ -1,13 +1,29 @@
-﻿#header {
+﻿html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.fullheight {
+    height: 100%;
+}
+
+#header {
   background-color: #3082fc;
+  height: 3rem;
 }
 
 #input {
   background-color: #6087c3;
+  height: 3.3rem;
 }
 
 #messages {
-  height: 80vh;
+  height: 70%;
 }
 
 .message-meta {
