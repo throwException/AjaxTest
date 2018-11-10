@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chat-Test</title>
+    <link rel="stylesheet" href="/Assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/custom.css">
+    <script src="/Assets/jquery-3.3.1.min.js"></script>
+    <script src="/Assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+    function olddata(){
+        $.get("/old/@Model", function(data, status){
+            $("#list").prepend(data);
+            newdata();
+        });
+    }
+    function newdata(){
+        $.get("/new/@Model", function(data, status){
+            $("#list").prepend(data);
+            newdata();
+        });
+    }
+    $(document).ready(function(){
+        $("#writetext").keypress(function (e) {
+            if(e.which == 13 && !e.shiftKey) {
+                send();
+                e.preventDefault();
+                return false;
+            }
+        });
+        olddata();
+    });
+    function send(){
+        $.post("/write/@Model", $("#writetext")[0].value, function(data, status){
+            $("#writetext")[0].value = "";
+        });
+    }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="header" class="row">
+        <div class="col-12">
+          <h1>Chat-Test</h1>
+        </div>
+      </div>
+      <div id="input" class="row">
+        <div class="col-12">
+          <form action="javascript:send();">
+            <textarea rows="2" id="writetext"/></textarea>
+            <input id="submit" type="submit" value="Send"/>
+          </form>
+        </div>
+      </div>
+      <div id="messages" class="row">
+        <div class="col-12" id="list">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chat-Test Login</title>
+    <link rel="stylesheet" href="/Assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/custom.css">
+    <script src="/Assets/jquery-3.3.1.min.js"></script>
+    <script src="/Assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+    function login(){
+        $.post("/login", $("#author")[0].value, function(data, status){
+            window.location.replace("/update/" + $("#author")[0].value);
+        });
+    }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row header">
+        <div class="col-sm">
+          <h1>Chat-Test Login</h1>
+        </div>
+      </div>
+      <div class="row input">
+        <div class="col-sm">
+          <form action="javascript:login();">
+            <input id="author" type="text" name="Text"/>
+            <input type="submit" value="Login"/>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

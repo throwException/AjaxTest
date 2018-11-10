@@ -1,0 +1,17 @@
+﻿@Each.List
+<div class="container-fluid message">
+  <div class="row">
+    <div class="col-6 message-meta">
+      @Current.Author
+    </div>
+    <div class="col-6 message-meta">
+      @Current.Time
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      @Current.Text
+    </div>
+  </div>
+</div>
+@EndEach
